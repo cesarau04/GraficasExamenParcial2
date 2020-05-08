@@ -1,7 +1,7 @@
 class Creeper extends THREE.Group{
     constructor(){
         super();
-        this.refs = "creeper";
+        this.repr = "creeper";
         this.front_foot = new Box(2.4, 1.8, 1.2);
         this.front_foot.updatePosition(0, -5, 1.2);
 

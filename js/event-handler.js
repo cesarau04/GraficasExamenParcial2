@@ -106,7 +106,14 @@ function colorPaletteEvent(){
 
 function changeColor(rgb){
   var newColor = new THREE.Color(rgb);
-  program.currentSelected.mesh.material.color = newColor;
+  if (program.currentSelected.type === "Group"){
+    for (var i = 0; i<program.currentSelected.children.length-1; i++){
+      console.log(program.currentSelected.children[i]);
+      program.currentSelected.children[i].mesh.material.color = newColor;
+    }
+  } else {
+    program.currentSelected.mesh.material.color = newColor;
+  }
 }
 
   function onModeChange(e) {

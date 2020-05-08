@@ -117,14 +117,17 @@ class Program {
     listUpdater(obj){
         for (var obj in this.objectsInScene){
             var x = document.createElement("LI");
-            var t = document.createTextNode(this.objectsInScene[obj].repr+ " " + this.objectsInScene[obj].id);
+            if (program.currentSelected.type === "Group"){
+                var t = document.createTextNode(this.objectsInScene[obj].repr + " " + this.objectsInScene[obj].id);
+            } else {
+                var t = document.createTextNode(this.objectsInScene[obj].repr+ " " + this.objectsInScene[obj].id);
+            }
             x.addEventListener('click', this.clickchecker.bind(event, obj));
             x.appendChild(t);
             document.getElementById("figure-list").appendChild(x);
         }
     }
 
-    
     clickchecker(obj, _){
         this.currentSelected = this.objectsInScene[obj];
         console.log(this.currentSelected);
