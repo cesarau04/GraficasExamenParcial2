@@ -11,7 +11,16 @@ function toolsEventHandler(e)
   }
 
   if (e === "sphere"){
-    program.addMesh(new Sphere())
+    program.addMesh(new Sphere());
+  }
+  if (e === "box"){
+    program.addMesh(new Box());
+  }
+  if (e === "cylinder"){
+    program.addMesh(new Cylinder());
+  }
+  if (e === "cone"){
+    program.addMesh(new Cone());
   }
 }
 
