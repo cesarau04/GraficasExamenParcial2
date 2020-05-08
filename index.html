@@ -29,7 +29,7 @@
       <tr>
         <td><img id="img-eraser" class="action" src="imgs/eraser.png" alt="" onclick="toolsEventHandler('2');"></td>
         <!-- FLOOR -->
-        <td><img id="img-segment" class="action" src="imgs/.png" alt="" onclick="toolsEventHandler('floor');"/></td>
+        <td><img id="img-segment" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('floor');"/></td>
         <td colspan="3">
           <label class="switch">
             Animate:<input type="checkbox" id="animate">
@@ -51,9 +51,9 @@
       <tr>
         <td><img id="img-line-width" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('6');"/></td>
         <td><img id="img-box" class="action" src="https://pluspng.com/img-png/cube-png-cube-png-hd-1246.png" alt="" onclick="toolsEventHandler('box');"/></td>
-        <td><p>x</p><input type = "text" id ="translation-x" maxlength="2" size="2" style="text-align:center;"></td>
-        <td><p>y</p><input type = "text" id ="translation-y" maxlength="2" size="2" style="text-align:center;"></td>
-        <td><p>z</p><input type = "text" id ="translation-z" maxlength="2" size="2" style="text-align:center;"></td>
+        <td><p>x</p><input type = "text" id ="translation-x" maxlength="2" size="2" style="text-align:center;"><input type="range" min="-100" max="100" value="0" class="slider" id="pan-slider"></td>
+        <td><p>y</p><input type = "text" id ="translation-y" maxlength="2" size="2" style="text-align:center;"><input type="range" min="-100" max="100" value="0" class="slider" id="pan-slider"></td>
+        <td><p>z</p><input type = "text" id ="translation-z" maxlength="2" size="2" style="text-align:center;"><input type="range" min="-100" max="100" value="0" class="slider" id="pan-slider"></td>
         <td colspan="3">  
           <p>dolly</p>
           <input type="range" min="-100" max="100" value="50" class="slider" id="dolly-slider">

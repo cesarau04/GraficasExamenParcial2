@@ -78,7 +78,7 @@ function refreshTransformUI(){
   document.getElementById("scale-z").value = program.currentSelected.scale.z
 }
 
-function 
+// function 
 
 function onZoomCamera(e){
 
