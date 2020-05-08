@@ -33,4 +33,3 @@ function initEventHandler(e)
 {
 	document.addEventListener("change", onModeChange)
 }
-
