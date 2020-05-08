@@ -1,4 +1,5 @@
 isWireFrame = false;
+hex = "#ffffff"
 
 function toolsEventHandler(e) 
 {
@@ -14,18 +15,22 @@ function toolsEventHandler(e)
   if (e === "sphere"){
     program.addMesh(new Sphere());
     program.currentSelected.changeWireframe(isWireFrame);
+    program.currentSelected.changeColor(hex);
   }
   if (e === "box"){
     program.addMesh(new Box());
     program.currentSelected.changeWireframe(isWireFrame);
+    program.currentSelected.changeColor(hex);
   }
   if (e === "cylinder"){
     program.addMesh(new Cylinder());
     program.currentSelected.changeWireframe(isWireFrame);
+    program.currentSelected.changeColor(hex);
   }
   if (e === "cone"){
     program.addMesh(new Cone());
     program.currentSelected.changeWireframe(isWireFrame);
+    program.currentSelected.changeColor(hex);
   }
   if (e === "solid"){
     isWireFrame = false;
@@ -57,6 +62,14 @@ function toolsEventHandler(e)
     } else {
       program.createPerspectiveCamera();
     }
+  }
+}
+
+function colorPaletteEvent(){
+  hex = document.getElementById("color-palette").value//.replace("#","0x")
+  console.log(hex);
+  for(i = 0; i < program.objectsInScene.length;i++){
+     program.objectsInScene[i].changeColor(hex);
   }
 }
 

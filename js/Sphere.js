@@ -46,6 +46,11 @@ class Sphere extends THREE.Mesh {
         this.mesh.material.wireframe = value;
     }
 
+    changeColor(rgb){
+        var newColor = new THREE.Color(rgb)
+        this.mesh.material.color = newColor;
+    }
+
     toString() {
         return this.repr;
     }
