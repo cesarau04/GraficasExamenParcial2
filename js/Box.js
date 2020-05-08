@@ -41,6 +41,10 @@ class Box extends THREE.Mesh{
         this.animationMode = mode
     }
 
+    changeWireframe(value){
+        this.mesh.material.wireframe = value;
+    }
+
     toString(){
         return this.repr;
     }

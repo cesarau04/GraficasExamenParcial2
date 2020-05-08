@@ -2,8 +2,9 @@ class Cylinder extends THREE.Mesh{
     constructor(rt=1,rb=1, ws=5, hs=16){
       super();
       this.geometry = new THREE.CylinderGeometry(rt,rb, ws, hs);
-      this.material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
+      this.material = new THREE.MeshBasicMaterial( {color: 0xffffff, wireframe: false} );
       this.mesh = new THREE.Mesh(this.geometry, this.material)
+      console.log(this.material.wireframe);
       this.repr = "Cylinder"
       this.shouldAnimate=false;
       this.animationMode=null;
@@ -14,11 +15,16 @@ class Cylinder extends THREE.Mesh{
   
       this.anime = this.anime.bind(this);
       this.toString = this.toString.bind(this);
+      this.changeWireframe = this.changeWireframe.bind(this);
     }
 
     anime(mode = "ROTATING"){
       this.shouldAnimate = !this.shouldAnimate;
       this.animationMode = mode;
+    }
+
+    changeWireframe(value){
+        this.mesh.material.wireframe = value;
     }
     
     updatePosition(x=this.mesh.position.x, y=this.mesh.position.y, z=this.mesh.position.z){
