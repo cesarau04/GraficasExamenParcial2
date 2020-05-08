@@ -6,8 +6,9 @@ class Anime {
 
     do(obj) {
         if (obj.shouldAnimate) {
-            if (obj.animationMode === 'ROTATING') {                
-                obj.updateRotation((obj.mesh.rotation.x + 30) % 360, (obj.mesh.rotation.y + 30) % 360);
+            if (obj.animationMode === 'ROTATING') {       
+                obj.rotation.x += 0.01;
+                obj.rotation.y += 0.01;
             } else if (obj.animationMode === 'MOVING') {
                 if (obj.mesh.position.x > 3.) {
                     obj.updatePosition(-3.);
