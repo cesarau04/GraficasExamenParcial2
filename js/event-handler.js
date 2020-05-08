@@ -3,12 +3,15 @@ hex = "#ffffff"
 
 function toolsEventHandler(e) {
   console.log("Enter EventHandler");
-  if (e === 'floor') {
-    //program.addMesh(new Floor());
-    //program.currentSelected.changeWireframe(isWireFrame);
-    //changeColor(hex);
+  if (e === 'creeper') {
     program.addMesh(new Creeper());
     program.currentSelected.changeWireframe(isWireFrame);
+    changeColor(hex);
+  }
+  if (e === 'floor') {
+    program.addMesh(new Floor());
+    program.currentSelected.changeWireframe(isWireFrame);
+    changeColor(hex);
   }
 
   if (e === "sphere") {
@@ -206,7 +209,6 @@ function changeColor(rgb){
   }
 
   function initEventHandler(e) {
-    document.getElementById("mode").addEventListener("change", onModeChange);
     document.getElementById("zoom-slider").addEventListener("change", onZoomCamera);
     document.getElementById("pan-slider").addEventListener("change", onPanCamera);
     document.getElementById("dolly-slider").addEventListener("change", onDollyCamera);
