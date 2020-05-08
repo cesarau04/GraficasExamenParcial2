@@ -22,6 +22,7 @@ class Sphere extends THREE.Mesh {
         this.position.y = y
         this.position.z = z
     }
+
     updateRotation(x = this.mesh.rotation.x, y = this.mesh.rotation.y, z = this.mesh.rotation.z) {
         this.rotation.x = x
         this.rotation.y = y
@@ -44,11 +45,6 @@ class Sphere extends THREE.Mesh {
 
     changeWireframe(value){
         this.mesh.material.wireframe = value;
-    }
-
-    changeColor(rgb){
-        var newColor = new THREE.Color(rgb)
-        this.mesh.material.color = newColor;
     }
 
     toString() {
