@@ -7,7 +7,7 @@ class Anime {
     do(obj) {
         if (obj.shouldAnimate) {
             if (obj.animationMode === 'ROTATING') {       
-                obj.rotation.x += 0.01;
+                //obj.rotation.x += 0.01;
                 obj.rotation.y += 0.01;
             } else if (obj.animationMode === 'MOVING') {
                 if (obj.mesh.position.x > 3.) {

@@ -4,9 +4,11 @@ hex = "#ffffff"
 function toolsEventHandler(e) {
   console.log("Enter EventHandler");
   if (e === 'floor') {
-    program.addMesh(new Floor());
+    //program.addMesh(new Floor());
+    //program.currentSelected.changeWireframe(isWireFrame);
+    //changeColor(hex);
+    program.addMesh(new Creeper());
     program.currentSelected.changeWireframe(isWireFrame);
-    changeColor(hex);
   }
 
   if (e === "sphere") {
@@ -106,7 +108,14 @@ function colorPaletteEvent(){
 
 function changeColor(rgb){
   var newColor = new THREE.Color(rgb);
-  program.currentSelected.mesh.material.color = newColor;
+  if (program.currentSelected.type === "Group"){
+    for (var i = 0; i<program.currentSelected.children.length-1; i++){
+      console.log(program.currentSelected.children[i]);
+      program.currentSelected.children[i].mesh.material.color = newColor;
+    }
+  } else {
+    program.currentSelected.mesh.material.color = newColor;
+  }
 }
 
   function onModeChange(e) {
