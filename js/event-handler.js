@@ -91,7 +91,7 @@ function toolsEventHandler(e) {
   if (e === "clear") {
     program.__restart__();
   }
-
+}
 
   function colorPaletteEvent() {
     hex = document.getElementById("color-palette").value//.replace("#","0x")
