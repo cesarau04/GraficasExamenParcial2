@@ -133,7 +133,15 @@ function toolsEventHandler(e) {
   // function 
 
   function onZoomCamera(e) {
-
+    console.log(document.getElementById("zoom-slider").value);
+    
+    if (program.bIsCameraOrto){
+      program.camera.zoom = document.getElementById("zoom-slider").value / CamVelocityFactor;
+      program.camera.updateProjectionMatrix();
+    } else {
+      program.camera.fov *= document.getElementById("zoom-slider").value / CamVelocityFactor;
+      program.camera.updateProjectionMatrix();
+    }
   }
 
   var CamVelocityFactor = 50;
