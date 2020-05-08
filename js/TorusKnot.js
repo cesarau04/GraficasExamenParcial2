@@ -1,11 +1,10 @@
-class Box extends THREE.Mesh{
-    constructor(w=2, h=2, d=2){
+class TorusKnot extends THREE.Mesh {
+    constructor(r=4, t=1, ts=100, rs=16) {
         super();
-        this.geometry = new THREE.BoxGeometry( w, h, d );
-        this.material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
-        this.mesh = new THREE.Mesh( this.geometry, this.material );
-
-        this.repr = "Box"
+        this.geometry = new THREE.TorusKnotGeometry( r, t, ts, ts );
+        this.material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+        this.mesh = new THREE.Mesh(this.geometry, this.material)
+        this.repr = "TorusKnot"
 
         this.shouldAnimate = false;
         this.animationMode = null;
@@ -18,39 +17,36 @@ class Box extends THREE.Mesh{
         this.toString = this.toString.bind(this);
     }
 
-    updatePosition(x = this.mesh.position.x, y = this.mesh.position.y, z = this.mesh.position.z){
+    updatePosition(x = this.mesh.position.x, y = this.mesh.position.y, z = this.mesh.position.z) {
         this.position.x = x
         this.position.y = y
         this.position.z = z
     }
-
-    updateRotation(x = this.mesh.rotation.x, y = this.mesh.rotation.y, z = this.mesh.rotation.z){
+    updateRotation(x = this.mesh.rotation.x, y = this.mesh.rotation.y, z = this.mesh.rotation.z) {
         this.rotation.x = x
         this.rotation.y = y
         this.rotation.z = z
     }
-    
-    updateScale(x = this.mesh.scale.x, y = this.mesh.scale.y, z = this.mesh.scale.z){
+    updateScale(x = this.mesh.scale.x, y = this.mesh.scale.y, z = this.mesh.scale.z) {
         this.scale.x = x
         this.scale.y = y
         this.scale.z = z
     }
 
-    anime(mode="ROTATING"){
+    anime(mode = "ROTATING") {
         this.shouldAnimate = !this.shouldAnimate
         this.animationMode = mode
+        print("Should Animate val")
+        print(this.shouldAnimate)
+        print("Mode")
+        print(mode)
     }
 
     changeWireframe(value){
         this.mesh.material.wireframe = value;
     }
 
-    changeColor(rgb){
-        var newColor = new THREE.Color(rgb)
-        this.mesh.material.color = newColor;
-    }
-
-    toString(){
+    toString() {
         return this.repr;
     }
 }
