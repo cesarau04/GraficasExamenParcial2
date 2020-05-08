@@ -1,7 +1,8 @@
+isWireFrame = false;
+
 function toolsEventHandler(e) 
 {
   console.log("Enter EventHandler");
-  
   if (e === 'floor'){
     console.log("Enter Floor");
     var geometry = new THREE.BoxGeometry(5., .1, 5.);
@@ -12,21 +13,27 @@ function toolsEventHandler(e)
 
   if (e === "sphere"){
     program.addMesh(new Sphere());
+    program.currentSelected.changeWireframe(isWireFrame);
   }
   if (e === "box"){
     program.addMesh(new Box());
+    program.currentSelected.changeWireframe(isWireFrame);
   }
   if (e === "cylinder"){
     program.addMesh(new Cylinder());
+    program.currentSelected.changeWireframe(isWireFrame);
   }
   if (e === "cone"){
     program.addMesh(new Cone());
+    program.currentSelected.changeWireframe(isWireFrame);
   }
   if (e === "solid"){
+    isWireFrame = false;
     for(i = 0; i < program.objectsInScene.length;i++){
       program.objectsInScene[i].changeWireframe(false);
     }
   }else if(e === "wiref"){
+    isWireFrame = true;
     for(i = 0; i < program.objectsInScene.length;i++){
       program.objectsInScene[i].changeWireframe(true);
     }
