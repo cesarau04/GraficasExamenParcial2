@@ -6,6 +6,10 @@
     <script src="js/lib/three.min.js" type="text/javascript"></script>
     <script src="js/event-handler.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/Box.js" type="text/javascript"></script>
+    <script src="js/Sphere.js" type="text/javascript"></script>
+    <script src="js/Cylinder.js" type="text/javascript"></script>
+    <script src="js/Cone.js" type="text/javascript"></script>
 </head>
 <body onload = main();>
   <h1>My Paint Scene 3D</h1>
@@ -26,20 +30,20 @@
         <td><img id="img-segment" class="action" src="imgs/.png" alt="" onclick="toolsEventHandler('floor');"/></td>
       </tr>
       <tr>
-        <td><img id="img-clear-all" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('sphere');"/></td>
-        <td><img id="img-triangle" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('5');"/></td>
+        <td><img id="img-clear-all" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('4');"/></td>
+        <td><img id="img-cone" class="action" src="https://c7.uihere.com/files/328/647/641/triangle-area-purple-cone-shape-cliparts-thumb.jpg" alt="" onclick="toolsEventHandler('cone');"/></td>
       </tr>
       <tr>
         <td><img id="img-line-width" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('6');"/></td>
-        <td><img id="img-rectangle" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('7');"/></td>
+        <td><img id="img-box" class="action" src="https://pluspng.com/img-png/cube-png-cube-png-hd-1246.png" alt="" onclick="toolsEventHandler('box');"/></td>
       </tr>
       <tr>
         <td><img id="img-fill-polygon" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('8');"/></td>
-        <td><img id="img-circle" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('9');"/></td>
+        <td><img id="img-spere" class="action" src="https://img.favpng.com/1/22/21/sphere-png-favpng-tLD1Ei0kkL6uGXmYFUb1hiiUu.jpg" alt="" onclick="toolsEventHandler('sphere');"/></td>
       </tr>
       <tr>
         <td><input id="color-palette" class="action" src="imgs/pallete.png" type="color" name="name" value="#000000" onclick="toolsEventHandler('10');" onchange="colorPaletteEvent();"></td>
-        <td><img id="img-polygon" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('11');"/></td>
+        <td><img id="img-cylinder" class="action" src="https://toppng.com/uploads/preview/cylinder-coffee-table-115633196106hf7nuhzkh.png" alt="" onclick="toolsEventHandler('cylinder');"/></td>
       </tr>
     </table>
     <div style="float: center;">
