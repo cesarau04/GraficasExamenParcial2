@@ -179,6 +179,21 @@ function changeColor(rgb){
     program.currentSelected.anime()
   }
 
+  function onCamRotX(e) {
+    program.camera.rotation.x = document.getElementById("camrot-x-slider").value * Math.PI / 180
+    document.getElementById("camrot-x-slider").value = 0
+  }
+
+  function onCamRotY(e) {
+    program.camera.rotation.y = document.getElementById("camrot-y-slider").value * Math.PI / 180
+    document.getElementById("camrot-y-slider").value = 0
+  }
+
+  function onCamRotZ(e) {
+    program.camera.rotation.z = document.getElementById("camrot-z-slider").value * Math.PI / 180
+    document.getElementById("camrot-z-slider").value = 0
+  }
+
   function initEventHandler(e) {
     document.getElementById("mode").addEventListener("change", onModeChange);
     document.getElementById("zoom-slider").addEventListener("change", onZoomCamera);
@@ -186,4 +201,7 @@ function changeColor(rgb){
     document.getElementById("dolly-slider").addEventListener("change", onDollyCamera);
     document.getElementById("tilt-slider").addEventListener("change", onTiltCamera);
     document.getElementById("animate").addEventListener("change", onAnimToggle)
+    document.getElementById("camrot-x-slider").addEventListener("change", onCamRotX)
+    document.getElementById("camrot-y-slider").addEventListener("change", onCamRotY)
+    document.getElementById("camrot-z-slider").addEventListener("change", onCamRotZ)
   }
