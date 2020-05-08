@@ -22,14 +22,68 @@ function toolsEventHandler(e)
   if (e === "cone"){
     program.addMesh(new Cone());
   }
+  
+  if (e === "camera-change") {
+    if (program.bIsCameraOrto){
+      program.createPerspectiveCamera();
+      console.log(program.camera);
+    } else {
+      program.createOrtoCamera(-5, 5, 5, -5);
+      console.log(program.camera);
+      console.log(program.currentSelected);
+      
+    }
+  }
+
+  if (e === "reposition") {
+    if (program.bIsCameraOrto){
+      program.createOrtoCamera();
+    } else {
+      program.createPerspectiveCamera();
+    }
+  }
 }
 
 function onModeChange(e){
-  EditMode = !EditMode
-  console.log("EditMode val: " + EditMode);
+  // EditMode = !EditMode
+  console.log("EditMode val: ") // + EditMode);
+}
+
+function resetUI(){
+  document.getElementById("zoom-slider").value = 0
+  document.getElementById("pan-slider").value = 0
+  document.getElementById("dolly-slider").value = 0
+  document.getElementById("tilt-slider").value = 0
+}
+
+function onZoomCamera(e){
+
+}
+
+var CamVelocityFactor = 50;
+function onPanCamera(e){
+  var panValue = document.getElementById("pan-slider").value / CamVelocityFactor;
+  program.camera.position.x = program.camera.position.x + panValue
+  document.getElementById("pan-slider").value = 0
+}
+
+function onDollyCamera(e){
+  var dollyValue = document.getElementById("dolly-slider").value / CamVelocityFactor;
+  program.camera.position.z = program.camera.position.z + dollyValue
+  document.getElementById("dolly-slider").value = 0
+}
+
+function onTiltCamera(e){
+  var tiltValue = document.getElementById("tilt-slider").value / CamVelocityFactor;
+  program.camera.position.y = program.camera.position.y + tiltValue
+  document.getElementById("tilt-slider").value = 0
 }
 
 function initEventHandler(e)
 {
-	document.addEventListener("change", onModeChange)
+  document.getElementById("mode").addEventListener("change", onModeChange);
+  document.getElementById("zoom-slider").addEventListener("change", onZoomCamera);
+  document.getElementById("pan-slider").addEventListener("change", onPanCamera);
+  document.getElementById("dolly-slider").addEventListener("change", onDollyCamera);
+  document.getElementById("tilt-slider").addEventListener("change", onTiltCamera);
 }
