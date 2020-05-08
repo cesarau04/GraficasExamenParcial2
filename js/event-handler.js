@@ -26,12 +26,8 @@ function toolsEventHandler(e)
   if (e === "camera-change") {
     if (program.bIsCameraOrto){
       program.createPerspectiveCamera();
-      console.log(program.camera);
     } else {
       program.createOrtoCamera(-5, 5, 5, -5);
-      console.log(program.camera);
-      console.log(program.currentSelected);
-      
     }
   }
 
@@ -55,6 +51,25 @@ function resetUI(){
   document.getElementById("dolly-slider").value = 0
   document.getElementById("tilt-slider").value = 0
 }
+
+function refreshTransformUI(){
+  if (program.currentSelected === null){
+    return
+  }
+  document.getElementById("translation-x").value = program.currentSelected.position.x
+  document.getElementById("translation-y").value = program.currentSelected.position.y
+  document.getElementById("translation-z").value = program.currentSelected.position.z
+
+  document.getElementById("rotation-x").value = program.currentSelected.rotation.x
+  document.getElementById("rotation-y").value = program.currentSelected.rotation.y
+  document.getElementById("rotation-z").value = program.currentSelected.rotation.z
+
+  document.getElementById("scale-x").value = program.currentSelected.scale.x
+  document.getElementById("scale-y").value = program.currentSelected.scale.y
+  document.getElementById("scale-z").value = program.currentSelected.scale.z
+}
+
+function 
 
 function onZoomCamera(e){
 

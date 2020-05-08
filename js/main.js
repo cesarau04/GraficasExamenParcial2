@@ -102,6 +102,7 @@ class Program {
             this.anime.do(obj);
         }
         
+        refreshTransformUI();
         requestAnimationFrame(this.update);
     }
 }
