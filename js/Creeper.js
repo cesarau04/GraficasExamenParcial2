@@ -23,8 +23,8 @@ class Creeper extends THREE.Group{
         this.faceC = new Box(0.3, 1.8, 0.3);
         this.faceC.updatePosition(1, 1, 0.9);
         //yeh
-        this.faceD = new Box(0.6, 0.9, 0.3);
-        this.faceD.updatePosition(0, 0.85, 0.9);
+        this.faceD = new Box(0.6, 0.6, 0.3);
+        this.faceD.updatePosition(0, 1.08, 0.9);
 
         this.faceE = new Box(0.6, 0.9, 0.3);
         this.faceE.updatePosition(-0.85, 0, 0.9);
@@ -32,14 +32,19 @@ class Creeper extends THREE.Group{
         this.faceF = new Box(0.6, 0.9, 0.3);
         this.faceF.updatePosition(0.85, 0, 0.9);
 
-        this.faceG = new Box(0.6, 0.9, 0.3);
-        this.faceG.updatePosition(0, 0.85, 0.9);
+        this.faceG = new Box(0.9, 0.3, 0.3);
+        this.faceG.updatePosition(-0.72, 0.6, 0.9);
 
-        this.faceH = new Box(0.6, 0.9, 0.3);
-        this.faceH.updatePosition(-0.85, 0, 0.9);
+        this.faceH = new Box(0.9, 0.3, 0.3);
+        this.faceH.updatePosition(0.72, 0.6, 0.9);
 
-        this.faceI = new Box(0.6, 0.9, 0.3);
-        this.faceI.updatePosition(0.85, 0, 0.9);
+        this.faceI = new Box(0.6, 0.3, 0.3);
+        this.faceI.updatePosition(0, -0.3, 0.9);
+
+        this.mouth = new Box(2.3, 2.4, 0.001);
+        this.mouth.updatePosition(0, 0.8, 0.9);
+        this.color = new THREE.Color("rgb(0, 0, 0)");
+        this.mouth.mesh.material.color = this.color;
 
 
 
@@ -56,6 +61,7 @@ class Creeper extends THREE.Group{
         this.add(this.faceG);
         this.add(this.faceH);
         this.add(this.faceI);
+        this.add(this.mouth);
     
         this.shouldAnimate = false;
         this.animationMode = null;
