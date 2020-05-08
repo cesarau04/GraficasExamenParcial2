@@ -4,7 +4,6 @@ function toolsEventHandler(e)
 {
   console.log("Enter EventHandler");
   if (e === 'floor'){
-    console.log("Enter Floor");
     var geometry = new THREE.BoxGeometry(5., .1, 5.);
     var material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
     var mesh = new THREE.Mesh(geometry, material)
@@ -53,6 +52,32 @@ function toolsEventHandler(e)
     } else {
       program.createPerspectiveCamera();
     }
+  }
+
+  if (e === "delete-current") {
+    newScene = []
+    console.log(program.objectsInScene);
+    
+    for (var i in program.objectsInScene){
+      if (program.objectsInScene[i].id === program.currentSelected.id) {
+        document.getElementById("figure-list").innerHTML = ''
+      } else {
+        newScene.push(program.objectsInScene[i])
+      }
+    }
+
+    
+    var bkCamera = program.camera;
+    var bkLight = program.light;
+    program.scene.dispose();
+    program.scene = new THREE.Scene();
+    program.scene.add(bkCamera);
+    program.scene.add(bkLight);
+    program.objectsInScene = []
+    for (var i in newScene){
+      program.addMesh(newScene[i])
+    }
+
   }
 }
 
