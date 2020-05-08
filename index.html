@@ -23,27 +23,55 @@
         <td><img id="img-point" class="action" src="imgs/cube.png" alt="" onclick="toolsEventHandler('1');"/></td>
 
         <td rowspan="8"><canvas id="canvas" width="500" height="500"></canvas></td>
+        <td><img id="camera-change" class="action" src="https://www.freepnglogos.com/uploads/camera-logo-png/camera-outline-icon-27.png" alt="" onclick="toolsEventHandler('camera-change');"/></td>
+        <td><h4>animate:</h4></td>
+        <td><form><input type = "checkbox" id ="animate"></form></td>
       </tr>
       <tr>
         <td><img id="img-eraser" class="action" src="imgs/eraser.png" alt="" onclick="toolsEventHandler('2');"></td>
         <!-- FLOOR -->
         <td><img id="img-segment" class="action" src="imgs/.png" alt="" onclick="toolsEventHandler('floor');"/></td>
+        <td><h4>Translation:</h4></td>
       </tr>
       <tr>
         <td><img id="img-clear-all" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('4');"/></td>
         <td><img id="img-cone" class="action" src="https://c7.uihere.com/files/328/647/641/triangle-area-purple-cone-shape-cliparts-thumb.jpg" alt="" onclick="toolsEventHandler('cone');"/></td>
+        <td><form><p>x</p><input type = "text" id ="translation-x" maxlength="2" size="2" style="text-align:center;"></form></td>
+        <td><form><p>y</p><input type = "text" id ="translation-y" maxlength="2" size="2" style="text-align:center;"></form></td>
+        <td><form><p>z</p><input type = "text" id ="translation-z" maxlength="2" size="2" style="text-align:center;"></form></td>
       </tr>
       <tr>
         <td><img id="img-line-width" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('6');"/></td>
         <td><img id="img-box" class="action" src="https://pluspng.com/img-png/cube-png-cube-png-hd-1246.png" alt="" onclick="toolsEventHandler('box');"/></td>
+        <td><h4>Rotation:</h4></td>
       </tr>
       <tr>
         <td><img id="img-fill-polygon" class="action" src="imgs/logo.png" alt="" onclick="toolsEventHandler('8');"/></td>
         <td><img id="img-spere" class="action" src="https://img.favpng.com/1/22/21/sphere-png-favpng-tLD1Ei0kkL6uGXmYFUb1hiiUu.jpg" alt="" onclick="toolsEventHandler('sphere');"/></td>
+        <td><form><p>x</p><input type = "text" id ="rotation-x" maxlength="2" size="2" style="text-align:center;"></form></td>
+        <td><form><p>y</p><input type = "text" id ="rotation-y" maxlength="2" size="2" style="text-align:center;"></form></td>
+        <td><form><p>z</p><input type = "text" id ="rotation-z" maxlength="2" size="2" style="text-align:center;"></form></td>
       </tr>
       <tr>
         <td><input id="color-palette" class="action" src="imgs/pallete.png" type="color" name="name" value="#000000" onclick="toolsEventHandler('10');" onchange="colorPaletteEvent();"></td>
         <td><img id="img-cylinder" class="action" src="https://toppng.com/uploads/preview/cylinder-coffee-table-115633196106hf7nuhzkh.png" alt="" onclick="toolsEventHandler('cylinder');"/></td>
+        <td><h4>Scale:</h4></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><form><p>x</p><input type = "text" id ="scale-x" maxlength="2" size="2" style="text-align:center;"></form></td>
+        <td><form><p>y</p><input type = "text" id ="scale-y" maxlength="2" size="2" style="text-align:center;"></form></td>
+        <td><form><p>z</p><input type = "text" id ="scale-z" maxlength="2" size="2" style="text-align:center;"></form></td>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <ul id = "figure-list"></ul>
+        </td>
       </tr>
     </table>
     <div style="float: center;">
