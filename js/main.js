@@ -34,6 +34,8 @@ class Program {
         this.update = this.update.bind(this);
         this.createPerspectiveCamera = this.createPerspectiveCamera.bind(this);
         this.createOrtoCamera = this.createOrtoCamera.bind(this)
+        this.listUpdater = this.listUpdater.bind(this);
+        this.clickchecker = this.clickchecker.bind(this);
         // Auto init
         this.__restart__()
     }
@@ -87,10 +89,12 @@ class Program {
     }
 
     addMesh(obj){
+        
         this.scene.add(obj)
         this.objectsInScene.push(obj)
         this.sceneReady = true;
         this.currentSelected = obj
+        this.listUpdater(obj)
     }
 
     update(){
@@ -103,6 +107,19 @@ class Program {
         }
         
         requestAnimationFrame(this.update);
+    }
+
+    listUpdater(obj){
+        var x = document.createElement("LI");
+        var t = document.createTextNode(obj.repr+ " " + obj.id);
+        x.addEventListener('click', this.clickchecker.bind(event, obj));
+        x.appendChild(t);
+        document.getElementById("figure-list").appendChild(x);
+    }
+
+    
+    clickchecker(obj, _){
+        this.currentSelected = obj;
     }
 }
 
