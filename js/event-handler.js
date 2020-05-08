@@ -15,6 +15,7 @@ function toolsEventHandler(e)
   }
   if (e === "box"){
     program.addMesh(new Box());
+    program.currentSelected.anime()
   }
   if (e === "cylinder"){
     program.addMesh(new Cylinder());

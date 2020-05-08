@@ -90,8 +90,10 @@ class Program {
             this.threeRenderer.render(this.scene, this.camera);
         }
 
+        // console.log(this.objectsInScene);
+        
         for (var obj in this.objectsInScene){
-            program.anime.do(obj)
+            this.anime.do(obj);
         }
         
         requestAnimationFrame(this.update);
