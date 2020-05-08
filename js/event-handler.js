@@ -134,12 +134,26 @@ function changeColor(rgb){
     document.getElementById("scale-x").value = program.currentSelected.scale.x
     document.getElementById("scale-y").value = program.currentSelected.scale.y
     document.getElementById("scale-z").value = program.currentSelected.scale.z
+
+    if (program.currentSelected.shouldAnimate) {
+      document.getElementById("animate").checked = true;
+    } else {
+      document.getElementById("animate").checked = false;
+    }
   }
 
   // function 
 
   function onZoomCamera(e) {
-
+    console.log(document.getElementById("zoom-slider").value);
+    
+    if (program.bIsCameraOrto){
+      program.camera.zoom = document.getElementById("zoom-slider").value / CamVelocityFactor;
+      program.camera.updateProjectionMatrix();
+    } else {
+      program.camera.fov *= document.getElementById("zoom-slider").value / CamVelocityFactor;
+      program.camera.updateProjectionMatrix();
+    }
   }
 
   var CamVelocityFactor = 50;
@@ -159,6 +173,10 @@ function changeColor(rgb){
     var tiltValue = document.getElementById("tilt-slider").value / CamVelocityFactor;
     program.camera.position.y = program.camera.position.y + tiltValue
     document.getElementById("tilt-slider").value = 0
+  }
+
+  function onAnimToggle(e) {
+    program.currentSelected.anime()
   }
 
   function initEventHandler(e) {
@@ -182,6 +200,8 @@ function changeColor(rgb){
     document.getElementById("scale-x-slider").addEventListener("change",scaleSliders);
     document.getElementById("scale-y-slider").addEventListener("change",scaleSliders);
     document.getElementById("scale-z-slider").addEventListener("change",scaleSliders);
+
+    document.getElementById("animate").addEventListener("change", onAnimToggle)
   }
 
   function translationSliders(event){
