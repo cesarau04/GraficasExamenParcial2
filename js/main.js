@@ -59,6 +59,8 @@ class Program {
         this.currentSelected = null;
         this.bIsCameraOrto = false;
         this.anime = new Anime()
+        document.getElementById("figure-list").innerHTML = ''
+        this.objectsInScene=[]
     }
 
     createLight(){
