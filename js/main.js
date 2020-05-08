@@ -7,6 +7,8 @@ function main() {
     canvas = document.getElementById("canvas");
     program = new Program(canvas);
     
+    document.getElementById("animate").checked = false;
+
     initEventHandler();
     resetUI();
 
@@ -105,7 +107,7 @@ class Program {
         }
 
         for (var obj in this.objectsInScene){
-            this.anime.do(obj);
+            this.anime.do(this.objectsInScene[obj]);
         }
         
         refreshTransformUI();

@@ -134,6 +134,12 @@ function changeColor(rgb){
     document.getElementById("scale-x").value = program.currentSelected.scale.x
     document.getElementById("scale-y").value = program.currentSelected.scale.y
     document.getElementById("scale-z").value = program.currentSelected.scale.z
+
+    if (program.currentSelected.shouldAnimate) {
+      document.getElementById("animate").checked = true;
+    } else {
+      document.getElementById("animate").checked = false;
+    }
   }
 
   // function 
@@ -169,10 +175,15 @@ function changeColor(rgb){
     document.getElementById("tilt-slider").value = 0
   }
 
+  function onAnimToggle(e) {
+    program.currentSelected.anime()
+  }
+
   function initEventHandler(e) {
     document.getElementById("mode").addEventListener("change", onModeChange);
     document.getElementById("zoom-slider").addEventListener("change", onZoomCamera);
     document.getElementById("pan-slider").addEventListener("change", onPanCamera);
     document.getElementById("dolly-slider").addEventListener("change", onDollyCamera);
     document.getElementById("tilt-slider").addEventListener("change", onTiltCamera);
+    document.getElementById("animate").addEventListener("change", onAnimToggle)
   }
