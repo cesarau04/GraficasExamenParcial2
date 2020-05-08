@@ -42,6 +42,10 @@ class Sphere extends THREE.Mesh {
         print(mode)
     }
 
+    changeWireframe(value){
+        this.mesh.material.wireframe = value;
+    }
+
     toString() {
         return this.repr;
     }

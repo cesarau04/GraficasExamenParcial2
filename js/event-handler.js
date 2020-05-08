@@ -22,6 +22,15 @@ function toolsEventHandler(e)
   if (e === "cone"){
     program.addMesh(new Cone());
   }
+  if (e === "solid"){
+    for(i = 0; i < program.objectsInScene.length;i++){
+      program.objectsInScene[i].changeWireframe(false);
+    }
+  }else if(e === "wiref"){
+    for(i = 0; i < program.objectsInScene.length;i++){
+      program.objectsInScene[i].changeWireframe(true);
+    }
+  }
   
   if (e === "camera-change") {
     if (program.bIsCameraOrto){

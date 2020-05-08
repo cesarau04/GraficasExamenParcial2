@@ -18,7 +18,11 @@ class Cone extends THREE.Mesh{
   anime(mode = "ROTATING"){
       this.shouldAnimate = !this.shouldAnimate;
       this.animationMode = mode;
-    }  
+  }
+  
+  changeWireframe(value){
+    this.mesh.material.wireframe = value;
+  }
   
   updatePosition(x=this.mesh.position.x, y=this.mesh.position.y, z=this.mesh.position.z){
       this.position.x = x;
