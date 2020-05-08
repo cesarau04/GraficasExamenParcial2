@@ -23,11 +23,6 @@ class Cone extends THREE.Mesh{
   changeWireframe(value){
     this.mesh.material.wireframe = value;
   }
-
-  changeColor(rgb){
-    var newColor = new THREE.Color(rgb)
-    this.mesh.material.color = newColor;
-  }
   
   updatePosition(x=this.mesh.position.x, y=this.mesh.position.y, z=this.mesh.position.z){
       this.position.x = x;

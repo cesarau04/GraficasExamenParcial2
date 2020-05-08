@@ -7,35 +7,38 @@ function toolsEventHandler(e)
   if (e === 'floor'){
     program.addMesh(new Floor());
     program.currentSelected.changeWireframe(isWireFrame);
+    changeColor(hex);
   }
 
   if (e === "sphere"){
     program.addMesh(new Sphere());
     program.currentSelected.changeWireframe(isWireFrame);
-    program.currentSelected.changeColor(hex);
+    changeColor(hex);
   }
   if (e === "box"){
     program.addMesh(new Box());
     program.currentSelected.changeWireframe(isWireFrame);
-    program.currentSelected.changeColor(hex);
+    changeColor(hex);
   }
   if (e === "cylinder"){
     program.addMesh(new Cylinder());
     program.currentSelected.changeWireframe(isWireFrame);
-    program.currentSelected.changeColor(hex);
+    changeColor(hex);
   }
   if (e === "cone"){
     program.addMesh(new Cone());
     program.currentSelected.changeWireframe(isWireFrame);
-    program.currentSelected.changeColor(hex);
+    changeColor(hex);
   }
   if (e === "torus"){
     program.addMesh(new Torus());
     program.currentSelected.changeWireframe(isWireFrame);
+    changeColor(hex);
   }
   if (e === "torus-knot"){
     program.addMesh(new TorusKnot());
     program.currentSelected.changeWireframe(isWireFrame);
+    changeColor(hex);
   }
   if (e === "solid"){
     isWireFrame = false;
@@ -72,9 +75,12 @@ function toolsEventHandler(e)
 function colorPaletteEvent(){
   hex = document.getElementById("color-palette").value//.replace("#","0x")
   console.log(hex);
-  for(i = 0; i < program.objectsInScene.length;i++){
-     program.objectsInScene[i].changeColor(hex);
-  }
+  changeColor(hex);
+}
+
+function changeColor(rgb){
+  var newColor = new THREE.Color(rgb);
+  program.currentSelected.mesh.material.color = newColor;
 }
 
 function onModeChange(e){
