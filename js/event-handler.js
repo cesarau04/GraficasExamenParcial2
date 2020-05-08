@@ -1,59 +1,58 @@
 isWireFrame = false;
 hex = "#ffffff"
 
-function toolsEventHandler(e) 
-{
+function toolsEventHandler(e) {
   console.log("Enter EventHandler");
-  if (e === 'floor'){
+  if (e === 'floor') {
     program.addMesh(new Floor());
     program.currentSelected.changeWireframe(isWireFrame);
     changeColor(hex);
   }
 
-  if (e === "sphere"){
+  if (e === "sphere") {
     program.addMesh(new Sphere());
     program.currentSelected.changeWireframe(isWireFrame);
     changeColor(hex);
   }
-  if (e === "box"){
+  if (e === "box") {
     program.addMesh(new Box());
     program.currentSelected.changeWireframe(isWireFrame);
     changeColor(hex);
   }
-  if (e === "cylinder"){
+  if (e === "cylinder") {
     program.addMesh(new Cylinder());
     program.currentSelected.changeWireframe(isWireFrame);
     changeColor(hex);
   }
-  if (e === "cone"){
+  if (e === "cone") {
     program.addMesh(new Cone());
     program.currentSelected.changeWireframe(isWireFrame);
     changeColor(hex);
   }
-  if (e === "torus"){
+  if (e === "torus") {
     program.addMesh(new Torus());
     program.currentSelected.changeWireframe(isWireFrame);
     changeColor(hex);
   }
-  if (e === "torus-knot"){
+  if (e === "torus-knot") {
     program.addMesh(new TorusKnot());
     program.currentSelected.changeWireframe(isWireFrame);
     changeColor(hex);
   }
-  if (e === "solid"){
+  if (e === "solid") {
     isWireFrame = false;
-    for(i = 0; i < program.objectsInScene.length;i++){
+    for (i = 0; i < program.objectsInScene.length; i++) {
       program.objectsInScene[i].changeWireframe(false);
     }
-  }else if(e === "wiref"){
+  } else if (e === "wiref") {
     isWireFrame = true;
-    for(i = 0; i < program.objectsInScene.length;i++){
+    for (i = 0; i < program.objectsInScene.length; i++) {
       program.objectsInScene[i].changeWireframe(true);
     }
   }
-  
+
   if (e === "camera-change") {
-    if (program.bIsCameraOrto){
+    if (program.bIsCameraOrto) {
       program.createPerspectiveCamera();
     } else {
       program.createOrtoCamera(-5, 5, 5, -5);
@@ -61,13 +60,38 @@ function toolsEventHandler(e)
   }
 
   if (e === "reposition") {
-    if (program.bIsCameraOrto){
+    if (program.bIsCameraOrto) {
       program.createOrtoCamera();
     } else {
       program.createPerspectiveCamera();
     }
   }
-  if (e ==="clear"){
+
+  if (e === "delete-current") {
+    newScene = []
+    console.log(program.objectsInScene);
+
+    for (var i in program.objectsInScene) {
+      if (program.objectsInScene[i].id === program.currentSelected.id) {
+        document.getElementById("figure-list").innerHTML = ''
+      } else {
+        newScene.push(program.objectsInScene[i])
+      }
+    }
+
+
+    var bkCamera = program.camera;
+    var bkLight = program.light;
+    program.scene.dispose();
+    program.scene = new THREE.Scene();
+    program.scene.add(bkCamera);
+    program.scene.add(bkLight);
+    program.objectsInScene = []
+    for (var i in newScene) {
+      program.addMesh(newScene[i])
+    }
+  }
+  if (e === "clear") {
     program.__restart__();
   }
 }
@@ -83,65 +107,64 @@ function changeColor(rgb){
   program.currentSelected.mesh.material.color = newColor;
 }
 
-function onModeChange(e){
-  // EditMode = !EditMode
-  console.log("EditMode val: ") // + EditMode);
-}
-
-function resetUI(){
-  document.getElementById("zoom-slider").value = 0
-  document.getElementById("pan-slider").value = 0
-  document.getElementById("dolly-slider").value = 0
-  document.getElementById("tilt-slider").value = 0
-}
-
-function refreshTransformUI(){
-  if (program.currentSelected === null){
-    return
+  function onModeChange(e) {
+    // EditMode = !EditMode
+    console.log("EditMode val: ") // + EditMode);
   }
-  document.getElementById("translation-x").value = program.currentSelected.position.x
-  document.getElementById("translation-y").value = program.currentSelected.position.y
-  document.getElementById("translation-z").value = program.currentSelected.position.z
 
-  document.getElementById("rotation-x").value = program.currentSelected.rotation.x
-  document.getElementById("rotation-y").value = program.currentSelected.rotation.y
-  document.getElementById("rotation-z").value = program.currentSelected.rotation.z
+  function resetUI() {
+    document.getElementById("zoom-slider").value = 0
+    document.getElementById("pan-slider").value = 0
+    document.getElementById("dolly-slider").value = 0
+    document.getElementById("tilt-slider").value = 0
+  }
 
-  document.getElementById("scale-x").value = program.currentSelected.scale.x
-  document.getElementById("scale-y").value = program.currentSelected.scale.y
-  document.getElementById("scale-z").value = program.currentSelected.scale.z
-}
+  function refreshTransformUI() {
+    if (program.currentSelected === null) {
+      return
+    }
+    document.getElementById("translation-x").value = program.currentSelected.position.x
+    document.getElementById("translation-y").value = program.currentSelected.position.y
+    document.getElementById("translation-z").value = program.currentSelected.position.z
 
-// function 
+    document.getElementById("rotation-x").value = program.currentSelected.rotation.x
+    document.getElementById("rotation-y").value = program.currentSelected.rotation.y
+    document.getElementById("rotation-z").value = program.currentSelected.rotation.z
 
-function onZoomCamera(e){
+    document.getElementById("scale-x").value = program.currentSelected.scale.x
+    document.getElementById("scale-y").value = program.currentSelected.scale.y
+    document.getElementById("scale-z").value = program.currentSelected.scale.z
+  }
 
-}
+  // function 
 
-var CamVelocityFactor = 50;
-function onPanCamera(e){
-  var panValue = document.getElementById("pan-slider").value / CamVelocityFactor;
-  program.camera.position.x = program.camera.position.x + panValue
-  document.getElementById("pan-slider").value = 0
-}
+  function onZoomCamera(e) {
 
-function onDollyCamera(e){
-  var dollyValue = document.getElementById("dolly-slider").value / CamVelocityFactor;
-  program.camera.position.z = program.camera.position.z + dollyValue
-  document.getElementById("dolly-slider").value = 0
-}
+  }
 
-function onTiltCamera(e){
-  var tiltValue = document.getElementById("tilt-slider").value / CamVelocityFactor;
-  program.camera.position.y = program.camera.position.y + tiltValue
-  document.getElementById("tilt-slider").value = 0
-}
+  var CamVelocityFactor = 50;
+  function onPanCamera(e) {
+    var panValue = document.getElementById("pan-slider").value / CamVelocityFactor;
+    program.camera.position.x = program.camera.position.x + panValue
+    document.getElementById("pan-slider").value = 0
+  }
 
-function initEventHandler(e)
-{
-  document.getElementById("mode").addEventListener("change", onModeChange);
-  document.getElementById("zoom-slider").addEventListener("change", onZoomCamera);
-  document.getElementById("pan-slider").addEventListener("change", onPanCamera);
-  document.getElementById("dolly-slider").addEventListener("change", onDollyCamera);
-  document.getElementById("tilt-slider").addEventListener("change", onTiltCamera);
-}
+  function onDollyCamera(e) {
+    var dollyValue = document.getElementById("dolly-slider").value / CamVelocityFactor;
+    program.camera.position.z = program.camera.position.z + dollyValue
+    document.getElementById("dolly-slider").value = 0
+  }
+
+  function onTiltCamera(e) {
+    var tiltValue = document.getElementById("tilt-slider").value / CamVelocityFactor;
+    program.camera.position.y = program.camera.position.y + tiltValue
+    document.getElementById("tilt-slider").value = 0
+  }
+
+  function initEventHandler(e) {
+    document.getElementById("mode").addEventListener("change", onModeChange);
+    document.getElementById("zoom-slider").addEventListener("change", onZoomCamera);
+    document.getElementById("pan-slider").addEventListener("change", onPanCamera);
+    document.getElementById("dolly-slider").addEventListener("change", onDollyCamera);
+    document.getElementById("tilt-slider").addEventListener("change", onTiltCamera);
+  }

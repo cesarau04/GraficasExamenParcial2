@@ -19,6 +19,7 @@ class Program {
         this.objectsInScene = [];
         this.scene = null;
         this.camera = null;
+        this.light = null
         this.bIsCameraOrto = false;
         this.sceneReady = false;
         this.mode = 'EDIT_MODE';
@@ -47,7 +48,8 @@ class Program {
         this.scene = new THREE.Scene();
         this.createPerspectiveCamera()
         this.scene.add(this.camera);
-        this.scene.add(this.createLight());
+        this.light = this.createLight()
+        this.scene.add(this.light);
         this.objectsInScene = []
         this.mode = 'EDIT_MODE';
         this.sceneReady = true;
@@ -89,11 +91,11 @@ class Program {
     }
 
     addMesh(obj){
-        
         this.scene.add(obj)
-        this.objectsInScene.push(obj)
+        this.objectsInScene.push(obj)        
         this.sceneReady = true;
         this.currentSelected = obj
+        document.getElementById("figure-list").innerHTML = ''
         this.listUpdater(obj)
     }
 
@@ -111,16 +113,19 @@ class Program {
     }
 
     listUpdater(obj){
-        var x = document.createElement("LI");
-        var t = document.createTextNode(obj.repr+ " " + obj.id);
-        x.addEventListener('click', this.clickchecker.bind(event, obj));
-        x.appendChild(t);
-        document.getElementById("figure-list").appendChild(x);
+        for (var obj in this.objectsInScene){
+            var x = document.createElement("LI");
+            var t = document.createTextNode(this.objectsInScene[obj].repr+ " " + this.objectsInScene[obj].id);
+            x.addEventListener('click', this.clickchecker.bind(event, obj));
+            x.appendChild(t);
+            document.getElementById("figure-list").appendChild(x);
+        }
     }
 
     
     clickchecker(obj, _){
-        this.currentSelected = obj;
+        this.currentSelected = this.objectsInScene[obj];
+        console.log(this.currentSelected);
     }
 }
 
