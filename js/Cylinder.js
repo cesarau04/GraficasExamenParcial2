@@ -6,12 +6,14 @@ class Cylinder extends THREE.Mesh{
       this.mesh = new THREE.Mesh(this.geometry, this.material)
       this.repr = "Cylinder"
       this.shouldAnimate=false;
+      this.animationMode=null;
   
       this.toString = this.toString.bind(this);
     }
-  
-    animate(){
+
+    animate(mode = "ROTATING"){
       this.shouldAnimate = !this.shouldAnimate;
+      this.animationMode = mode;
     }
     
     updatePosition(x, y, z){

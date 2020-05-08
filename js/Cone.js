@@ -10,9 +10,10 @@ class Cone extends THREE.Mesh{
       this.toString = this.toString.bind(this);
     }
   
-    animate(){
-      this.shouldAnimate = !this.shouldAnimate;
-    }
+    animate(mode = "ROTATING"){
+        this.shouldAnimate = !this.shouldAnimate;
+        this.animationMode = mode;
+      }  
     
     updatePosition(x, y, z){
   
