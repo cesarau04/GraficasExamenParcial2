@@ -1,10 +1,10 @@
-class Sphere extends THREE.Mesh {
-    constructor(r = 1, ws = 32, hs = 32) {
+class Torus extends THREE.Mesh {
+    constructor(r=3, t=1, rs=16, ts=100) {
         super();
-        this.geometry = new THREE.SphereGeometry(r, ws, hs);
-        this.material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        this.geometry = new THREE.TorusGeometry( r, t, ts, ts );
+        this.material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
         this.mesh = new THREE.Mesh(this.geometry, this.material)
-        this.repr = "Sphere"
+        this.repr = "Torus"
 
         this.shouldAnimate = false;
         this.animationMode = null;
@@ -44,11 +44,6 @@ class Sphere extends THREE.Mesh {
 
     changeWireframe(value){
         this.mesh.material.wireframe = value;
-    }
-
-    changeColor(rgb){
-        var newColor = new THREE.Color(rgb)
-        this.mesh.material.color = newColor;
     }
 
     toString() {

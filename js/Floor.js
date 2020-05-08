@@ -1,11 +1,11 @@
-class Box extends THREE.Mesh{
-    constructor(w=2, h=2, d=2){
+class Floor extends THREE.Mesh{
+    constructor(w=5., h=.1, d=5.){
         super();
         this.geometry = new THREE.BoxGeometry( w, h, d );
         this.material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
         this.mesh = new THREE.Mesh( this.geometry, this.material );
 
-        this.repr = "Box"
+        this.repr = "floor"
 
         this.shouldAnimate = false;
         this.animationMode = null;
@@ -43,11 +43,6 @@ class Box extends THREE.Mesh{
 
     changeWireframe(value){
         this.mesh.material.wireframe = value;
-    }
-
-    changeColor(rgb){
-        var newColor = new THREE.Color(rgb)
-        this.mesh.material.color = newColor;
     }
 
     toString(){
