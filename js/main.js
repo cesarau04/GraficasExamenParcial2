@@ -8,7 +8,8 @@ function main() {
     program = new Program(canvas);
     
     initEventHandler();
-    
+    resetUI();
+
     program.update();
 }
 
@@ -18,6 +19,7 @@ class Program {
         this.objectsInScene = [];
         this.scene = null;
         this.camera = null;
+        this.bIsCameraOrto = false;
         this.sceneReady = false;
         this.mode = 'EDIT_MODE';
         this.canvas = canvasIn;
@@ -48,6 +50,7 @@ class Program {
         this.mode = 'EDIT_MODE';
         this.sceneReady = true;
         this.currentSelected = null;
+        this.bIsCameraOrto = false;
         this.anime = new Anime()
     }
 
@@ -55,21 +58,26 @@ class Program {
         return new THREE.AmbientLight();
     }
 
-    createPerspectiveCamera(fov=60., near=0.01, far=10000, x=0., y=0., z=5.){
+    createPerspectiveCamera(fov=60., near=0.01, far=10000, x=0., y=0., z=15.){
         var camera = new THREE.PerspectiveCamera(fov, this.canvas.width / this.canvas.height, near, far);
         camera.position.set(x, y, z);
         this.camera = camera
+        this.bIsCameraOrto = false;
     }
 
-    createOrtoCamera(left=(this.canvas.width / - 2), 
-                    right=(this.canvas.width / 2), 
-                    top=(this.canvas.height / 2),
-                    bottom=((this.canvas.height / -22)), 
+    createOrtoCamera(left=-5, 
+                    right=5, 
+                    top=5,
+                    bottom=-5, 
                     near=0.01, 
-                    far=10000){
+                    far=10000,
+                    x=0.,
+                    y=0.,
+                    z=10){
         var camera = new THREE.OrthographicCamera(left, right, top, bottom, near, far);
         camera.position.set(x,y,z)
         this.camera = camera
+        this.bIsCameraOrto = true;
     }
 
     moveCamera(x, y, z){
@@ -91,7 +99,7 @@ class Program {
         }
 
         for (var obj in this.objectsInScene){
-            program.anime.do(obj)
+            this.anime.do(obj);
         }
         
         requestAnimationFrame(this.update);

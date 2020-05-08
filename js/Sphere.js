@@ -36,6 +36,10 @@ class Sphere extends THREE.Mesh {
     anime(mode = "ROTATING") {
         this.shouldAnimate = !this.shouldAnimate
         this.animationMode = mode
+        print("Should Animate val")
+        print(this.shouldAnimate)
+        print("Mode")
+        print(mode)
     }
 
     changeWireframe(value){
