@@ -4,9 +4,11 @@ hex = "#ffffff"
 function toolsEventHandler(e) {
   console.log("Enter EventHandler");
   if (e === 'floor') {
-    program.addMesh(new Floor());
+    //program.addMesh(new Floor());
+    //program.currentSelected.changeWireframe(isWireFrame);
+    //changeColor(hex);
+    program.addMesh(new Creeper());
     program.currentSelected.changeWireframe(isWireFrame);
-    changeColor(hex);
   }
 
   if (e === "sphere") {
