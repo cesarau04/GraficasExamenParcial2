@@ -167,4 +167,49 @@ function changeColor(rgb){
     document.getElementById("pan-slider").addEventListener("change", onPanCamera);
     document.getElementById("dolly-slider").addEventListener("change", onDollyCamera);
     document.getElementById("tilt-slider").addEventListener("change", onTiltCamera);
+
+    // Translation Sliders
+    document.getElementById("transl-x-slider").addEventListener("change",translationSliders);
+    document.getElementById("transl-y-slider").addEventListener("change",translationSliders);
+    document.getElementById("transl-z-slider").addEventListener("change",translationSliders);
+
+    // Rotation Sliders
+    document.getElementById("rotation-x-slider").addEventListener("change",rotationSliders);
+    document.getElementById("rotation-y-slider").addEventListener("change",rotationSliders);
+    document.getElementById("rotation-z-slider").addEventListener("change",rotationSliders);
+
+    // Scale Sliders
+    document.getElementById("scale-x-slider").addEventListener("change",scaleSliders);
+    document.getElementById("scale-y-slider").addEventListener("change",scaleSliders);
+    document.getElementById("scale-z-slider").addEventListener("change",scaleSliders);
+  }
+
+  function translationSliders(event){
+    var newX = Number(document.getElementById("transl-x-slider").value);
+    var newY = Number(document.getElementById("transl-y-slider").value);
+    var newZ = Number(document.getElementById("transl-z-slider").value);
+    document.getElementById("translation-x").value = newX;
+    document.getElementById("translation-y").value = newY;
+    document.getElementById("translation-z").value = newZ;
+    program.currentSelected.updatePosition(newX,newY,newZ);
+  }
+
+  function rotationSliders(event){
+    var newX = Number(document.getElementById("rotation-x-slider").value);
+    var newY = Number(document.getElementById("rotation-y-slider").value);
+    var newZ = Number(document.getElementById("rotation-z-slider").value);
+    document.getElementById("rotation-x").value = newX;
+    document.getElementById("rotation-y").value = newY;
+    document.getElementById("rotation-z").value = newZ;
+    program.currentSelected.updateRotation(newX,newY,newZ);
+  }
+
+  function scaleSliders(event){
+    var newX = Number(document.getElementById("scale-x-slider").value);
+    var newY = Number(document.getElementById("scale-y-slider").value);
+    var newZ = Number(document.getElementById("scale-z-slider").value);
+    document.getElementById("scale-x").value = newX/CamVelocityFactor;
+    document.getElementById("scale-y").value = newY/CamVelocityFactor;
+    document.getElementById("scale-z").value = newZ/CamVelocityFactor;
+    program.currentSelected.updateScale(newX,newY,newZ);
   }
