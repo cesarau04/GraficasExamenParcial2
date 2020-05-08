@@ -4,11 +4,8 @@ function toolsEventHandler(e)
 {
   console.log("Enter EventHandler");
   if (e === 'floor'){
-    console.log("Enter Floor");
-    var geometry = new THREE.BoxGeometry(5., .1, 5.);
-    var material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
-    var mesh = new THREE.Mesh(geometry, material)
-    program.addMesh(mesh)
+    program.addMesh(new Floor());
+    program.currentSelected.changeWireframe(isWireFrame);
   }
 
   if (e === "sphere"){
@@ -25,6 +22,14 @@ function toolsEventHandler(e)
   }
   if (e === "cone"){
     program.addMesh(new Cone());
+    program.currentSelected.changeWireframe(isWireFrame);
+  }
+  if (e === "torus"){
+    program.addMesh(new Torus());
+    program.currentSelected.changeWireframe(isWireFrame);
+  }
+  if (e === "torus-knot"){
+    program.addMesh(new TorusKnot());
     program.currentSelected.changeWireframe(isWireFrame);
   }
   if (e === "solid"){
@@ -53,6 +58,9 @@ function toolsEventHandler(e)
     } else {
       program.createPerspectiveCamera();
     }
+  }
+  if (e ==="clear"){
+    program.__restart__();
   }
 }
 
