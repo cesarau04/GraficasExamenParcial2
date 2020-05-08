@@ -23,6 +23,7 @@ class Program {
         this.canvas = canvasIn;
         this.threeRenderer = null;
         this.currentSelected = null;
+        this.anime = null;
 
         // this.__restart__ = this.__restart__.bind(this);
         // this.createLight = tihs.createLight.bind(this);
@@ -47,6 +48,7 @@ class Program {
         this.mode = 'EDIT_MODE';
         this.sceneReady = true;
         this.currentSelected = null;
+        this.anime = new Anime()
     }
 
     createLight(){
@@ -70,6 +72,12 @@ class Program {
         this.camera = camera
     }
 
+    moveCamera(x, y, z){
+        this.camera.position.x = x
+        this.camera.position.y = y
+        this.camera.position.z = z
+    }
+
     addMesh(obj){
         this.scene.add(obj)
         this.objectsInScene.push(obj)
@@ -81,6 +89,11 @@ class Program {
         if (this.sceneReady) {
             this.threeRenderer.render(this.scene, this.camera);
         }
+
+        for (var obj in this.objectsInScene){
+            program.anime.do(obj)
+        }
+        
         requestAnimationFrame(this.update);
     }
 }
