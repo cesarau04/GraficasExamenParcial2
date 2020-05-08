@@ -236,9 +236,9 @@ function changeColor(rgb){
   }
 
   function translationSliders(event){
-    var newX = Number(document.getElementById("transl-x-slider").value);
-    var newY = Number(document.getElementById("transl-y-slider").value);
-    var newZ = Number(document.getElementById("transl-z-slider").value);
+    var newX = Number(document.getElementById("transl-x-slider").value) / CamVelocityFactor;
+    var newY = Number(document.getElementById("transl-y-slider").value) / CamVelocityFactor;
+    var newZ = Number(document.getElementById("transl-z-slider").value) / CamVelocityFactor;
     document.getElementById("translation-x").value = newX;
     document.getElementById("translation-y").value = newY;
     document.getElementById("translation-z").value = newZ;
@@ -246,9 +246,9 @@ function changeColor(rgb){
   }
 
   function rotationSliders(event){
-    var newX = Number(document.getElementById("rotation-x-slider").value);
-    var newY = Number(document.getElementById("rotation-y-slider").value);
-    var newZ = Number(document.getElementById("rotation-z-slider").value);
+    var newX = Number(document.getElementById("rotation-x-slider").value) / CamVelocityFactor;
+    var newY = Number(document.getElementById("rotation-y-slider").value) / CamVelocityFactor;
+    var newZ = Number(document.getElementById("rotation-z-slider").value) / CamVelocityFactor;
     document.getElementById("rotation-x").value = newX;
     document.getElementById("rotation-y").value = newY;
     document.getElementById("rotation-z").value = newZ;
@@ -256,11 +256,11 @@ function changeColor(rgb){
   }
 
   function scaleSliders(event){
-    var newX = Number(document.getElementById("scale-x-slider").value);
-    var newY = Number(document.getElementById("scale-y-slider").value);
-    var newZ = Number(document.getElementById("scale-z-slider").value);
-    document.getElementById("scale-x").value = newX/CamVelocityFactor;
-    document.getElementById("scale-y").value = newY/CamVelocityFactor;
-    document.getElementById("scale-z").value = newZ/CamVelocityFactor;
+    var newX = Number(document.getElementById("scale-x-slider").value / (CamVelocityFactor * 2));
+    var newY = Number(document.getElementById("scale-y-slider").value / (CamVelocityFactor * 2));
+    var newZ = Number(document.getElementById("scale-z-slider").value / (CamVelocityFactor * 2));
+    document.getElementById("scale-x").value = newX;
+    document.getElementById("scale-y").value = newY;
+    document.getElementById("scale-z").value = newZ;
     program.currentSelected.updateScale(newX,newY,newZ);
   }
