@@ -29,6 +29,7 @@ class Program {
         this.threeRenderer = null;
         this.currentSelected = null;
         this.anime = null;
+        this.cameraRotation = null;
 
         // this.__restart__ = this.__restart__.bind(this);
         // this.createLight = tihs.createLight.bind(this);
@@ -69,6 +70,7 @@ class Program {
         camera.position.set(x, y, z);
         this.camera = camera
         this.bIsCameraOrto = false;
+        this.cameraRotation = this.camera.rotation
     }
 
     createOrtoCamera(left=-5, 
@@ -84,6 +86,7 @@ class Program {
         camera.position.set(x,y,z)
         this.camera = camera
         this.bIsCameraOrto = true;
+        this.cameraRotation = this.camera.rotation
     }
 
     moveCamera(x, y, z){

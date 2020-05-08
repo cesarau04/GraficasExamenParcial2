@@ -61,8 +61,10 @@ function toolsEventHandler(e) {
 
   if (e === "reposition") {
     if (program.bIsCameraOrto) {
+      program.camera.rotation = program.cameraRotation
       program.createOrtoCamera();
     } else {
+      program.camera.rotation = program.cameraRotation
       program.createPerspectiveCamera();
     }
   }
@@ -180,17 +182,17 @@ function changeColor(rgb){
   }
 
   function onCamRotX(e) {
-    program.camera.rotation.x = document.getElementById("camrot-x-slider").value * Math.PI / 180
+    program.camera.rotation.x += document.getElementById("camrot-x-slider").value * Math.PI / 180
     document.getElementById("camrot-x-slider").value = 0
   }
 
   function onCamRotY(e) {
-    program.camera.rotation.y = document.getElementById("camrot-y-slider").value * Math.PI / 180
+    program.camera.rotation.y += document.getElementById("camrot-y-slider").value * Math.PI / 180
     document.getElementById("camrot-y-slider").value = 0
   }
 
   function onCamRotZ(e) {
-    program.camera.rotation.z = document.getElementById("camrot-z-slider").value * Math.PI / 180
+    program.camera.rotation.z += document.getElementById("camrot-z-slider").value * Math.PI / 180
     document.getElementById("camrot-z-slider").value = 0
   }
 
