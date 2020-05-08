@@ -7,25 +7,36 @@ class Cylinder extends THREE.Mesh{
       this.repr = "Cylinder"
       this.shouldAnimate=false;
       this.animationMode=null;
+      
+      this.updatePosition = this.updatePosition.bind(this);
+      this.updateRotation = this.updateRotation.bind(this);
+      this.updateScale = this.updateScale.bind(this); 
   
+      this.anime = this.anime.bind(this);
       this.toString = this.toString.bind(this);
     }
 
-    animate(mode = "ROTATING"){
+    anime(mode = "ROTATING"){
       this.shouldAnimate = !this.shouldAnimate;
       this.animationMode = mode;
     }
     
-    updatePosition(x, y, z){
-  
+    updatePosition(x=this.mesh.position.x, y=this.mesh.position.y, z=this.mesh.position.z){
+        this.position.x = x;
+        this.position.y = y;
+        this.position.z = z;
     }
   
-    updateRotation(x=obj.mesh.rotation.x, y=obj.mesh.rotation.y, z=obj.mesh.rotation.z){
-  
+    updateRotation(x=this.mesh.rotation.x, y=this.mesh.rotation.y, z=this.mesh.rotation.z){
+        this.rotation.x = x;
+        this.rotation.y = y;
+        this.rotation.z = z;
     }
   
-    updateScale(x, y, z){
-      this.mesh.scale(x,y,z)
+    updateScale(x=this.mesh.scale.x, y=this.mesh.scale.y, z=this.mesh.scale.z){
+        this.scale.x = x;
+        this.scale.y = y;
+        this.scale.z = z;
     }
   
     toString(){
