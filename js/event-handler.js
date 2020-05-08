@@ -29,6 +29,8 @@ function toolsEventHandler(e)
   }else if(e === "wiref"){
     for(i = 0; i < program.objectsInScene.length;i++){
       program.objectsInScene[i].changeWireframe(true);
+    }
+  }
   
   if (e === "camera-change") {
     if (program.bIsCameraOrto){
